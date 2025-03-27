@@ -1,16 +1,15 @@
-const card1 = document.getElementById('card1');
-const card2 = document.getElementById('card2');
-const card3 = document.getElementById('card3');
-
 const cards = document.querySelectorAll("span");
+const colors = ["#4D56FF", "#1269FF", "#5E21FF", "#3640FF", "#9900FF", "#8A47FF"];
 var cardsclass = document.getElementsByClassName("card");
+var cardcontainer = document.getElementsByClassName("cardcontainer");
 var cardlength = cards.length;
 
 window.onload = function() {
     for(var i = 0; i < cardlength; i ++) {
-        cardsclass[i].classList.toggle('transition');
-        cardsclass[i].style.transform = "translate(0px,"+ (10*i) +"px) rotate("+ (15* i - 5)+"deg)";
+       cardsclass[i].classList.toggle('transition');
+       cardsclass[i].style.transform = "translate(0px,"+ ((5*i)) +"px) rotate("+ ((7* (i)) - 13)+"deg)";
         // cardsclass[i].style.transform = "rotate("+ (15* i - 5)+"deg)";
+        cardsclass[i].style.backgroundColor = colors[i];
     }
   };
 
@@ -27,25 +26,27 @@ cards.forEach(element => {
     element.addEventListener('mouseout', function() {
         for(var i = 0; i < cardlength; i ++) {
             cardsclass[i].classList.toggle('transition');
-            cardsclass[i].style.transform = "rotate("+ (15* i - 5)+"deg)";
+       cardsclass[i].style.transform = "translate(0px,"+ ((5*i)) +"px) rotate("+ ((7* (i)) - 13)+"deg)";
         }
     });
   });
 
+  cardcontainer.addEventListener('mouseover', function() {
+    for(var i = 0; i < cardlength; i ++) {
+        cardsclass[i].classList.toggle('transition');
+   cardsclass[i].style.transform = "translate(0px,"+ ((5*i)) +"px) rotate("+ ((7* (i)) - 13)+"deg)";
+    }
+});
 
-// function expand(oldclassname, newclassname) {
-//     for(var i = 0; i < cardlength; i ++) {
-//         cardsclass[i].classList.remove(oldclassname);
-//         cardsclass[i].classList.add(newclassname);
-//     }
-// }
-
-// for(var j = 0; j < cardlength; j ++) {
-//     cardsclass[j].onmouseover = function() {
-//         expand("card", "transition");
-//     };
-    
-//     cardsclass[j].onmouseout = function() {
-//         expand("transition", "card");
-//     };
-// }
+  cards.forEach(element => {
+    element.addEventListener('click', function() {
+        if(classList.contains("transition")) {
+            return
+        } else {
+            for(var i = 0; i < cardlength; i ++) {
+                cardsclass[i].classList.toggle('transition');
+                cardsclass[i].style.transform = "rotate(0deg)";
+            }
+        }
+    });
+  });
